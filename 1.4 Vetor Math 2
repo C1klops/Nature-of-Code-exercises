@@ -17,7 +17,7 @@ void draw() {
   translate(width/2,height/2);
   ellipse(0, 0, 10, 10);
   
-  pos = new PVector(ball.xpos(), ball.ypos()); //mouse pos
+  pos = new PVector(ball.location.x, ball.location.y); //mouse pos
   center = new PVector(width/2,height/2);
   pos.sub(center);
   
@@ -49,11 +49,5 @@ class Ball {
   void display() {
     // Display circle at x location 
     ellipse(location.x, location.y, 16, 16);
-  }
-  int xpos() {
-    return parseInt(location.x);
-  }
-  int ypos(){
-    return parseInt(location.y);
   }
 }
