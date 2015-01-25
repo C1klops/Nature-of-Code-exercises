@@ -1,0 +1,57 @@
+PVector pos;
+PVector center;
+Ball ball = new Ball();
+
+void setup() {
+  size(400, 400);    
+}
+void draw() {
+  background(180);
+  noStroke();
+  fill(220,200,0);
+  ball.update();
+  ball.display();
+  
+  translate(width/2,height/2);
+  ellipse(0, 0, 10, 10);
+  
+  pos = new PVector(ball.xpos(), ball.ypos()); //mouse pos
+  center = new PVector(width/2,height/2);
+  pos.sub(center);
+  
+  strokeWeight(3);
+  stroke(220,200,0);
+  line(0,0, pos.x, pos.y);
+  
+  println(pos.x +"  and  "+pos.y); 
+}
+
+class Ball {
+  PVector location;
+  PVector velocity;
+
+  Ball() {
+    location = new PVector(100, 100);
+    velocity = new PVector(1.5, 2);
+  }
+  void update() {
+    // Add the current speed to the location.
+    location.add(velocity);
+    if ((location.x > width) || (location.x < 0)) {
+      velocity.x = velocity.x * -1;
+    }
+    if ((location.y > height) || (location.y < 0)) {
+      velocity.y = velocity.y * -1;
+    }
+  }
+  void display() {
+    // Display circle at x location 
+    ellipse(location.x, location.y, 16, 16);
+  }
+  int xpos() {
+    return parseInt(location.x);
+  }
+  int ypos(){
+    return parseInt(location.y);
+  }
+}
