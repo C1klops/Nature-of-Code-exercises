@@ -1,3 +1,5 @@
+// video of this great tutorial by Daniel Shiffman here https://vimeo.com/58943394
+
 PVector pos;
 PVector center;
 Ball ball = new Ball();
